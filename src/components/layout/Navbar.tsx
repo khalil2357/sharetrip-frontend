@@ -67,7 +67,7 @@ export default function Navbar() {
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        scrolled || menuOpen ? 'bg-white shadow-md' : 'bg-white/95 backdrop-blur-md shadow-sm'
+        scrolled || menuOpen ? 'bg-white shadow-md' : 'bg-transparent'
       )}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,8 +77,8 @@ export default function Navbar() {
             <div className="relative w-9 h-9 flex-shrink-0">
               <Image src="/logo.png" alt="SkyRoute" width={36} height={36} className="object-contain" priority />
             </div>
-            <span className="font-bold text-xl tracking-tight text-gray-900" style={{letterSpacing: '-0.03em'}}>
-              Sky<span className="text-blue-600">Route</span>
+            <span className={cn("font-bold text-xl tracking-tight transition-colors", scrolled || menuOpen ? "text-gray-900" : "text-white")} style={{letterSpacing: '-0.03em'}}>
+              Sky<span className={scrolled || menuOpen ? "text-blue-600" : "text-white"}>Route</span>
             </span>
           </Link>
 
@@ -96,8 +96,8 @@ export default function Navbar() {
                   className={cn(
                     'flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors',
                     pathname.startsWith(item.href)
-                      ? 'text-blue-600 bg-blue-50'
-                      : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
+                      ? (scrolled || menuOpen ? 'text-blue-600 bg-blue-50' : 'text-white bg-white/20')
+                      : (scrolled || menuOpen ? 'text-gray-700 hover:text-blue-600 hover:bg-blue-50' : 'text-white/80 hover:text-white hover:bg-white/10')
                   )}
                 >
                   <item.icon size={15} />
@@ -137,7 +137,7 @@ export default function Navbar() {
             {isAuthenticated ? (
               <>
                 <Link href="/wishlist">
-                  <Button variant="ghost" size="icon" className="relative">
+                  <Button variant="ghost" size="icon" className={cn("relative transition-colors", scrolled || menuOpen ? "" : "text-white hover:bg-white/10 hover:text-white")}>
                     <Heart size={18} />
                     {wishlistItems.length > 0 && (
                       <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
@@ -147,16 +147,16 @@ export default function Navbar() {
                   </Button>
                 </Link>
                 <Link href="/dashboard/notifications">
-                  <Button variant="ghost" size="icon">
+                  <Button variant="ghost" size="icon" className={cn("transition-colors", scrolled || menuOpen ? "" : "text-white hover:bg-white/10 hover:text-white")}>
                     <Bell size={18} />
                   </Button>
                 </Link>
                 <div className="relative group">
-                  <button className="flex items-center gap-2 p-1.5 rounded-xl hover:bg-gray-50 transition-colors">
+                  <button className={cn("flex items-center gap-2 p-1.5 rounded-xl transition-colors", scrolled || menuOpen ? "hover:bg-gray-50" : "hover:bg-white/10")}>
                     <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">
                       {user?.name?.slice(0, 2).toUpperCase()}
                     </div>
-                    <ChevronDown size={14} className="text-gray-500" />
+                    <ChevronDown size={14} className={scrolled || menuOpen ? "text-gray-500" : "text-white/80"} />
                   </button>
                   <div className="absolute right-0 top-full mt-2 w-52 bg-white rounded-xl shadow-xl border border-gray-100 py-1 hidden group-hover:block z-50">
                     <div className="px-4 py-3 border-b border-gray-100">
@@ -187,10 +187,10 @@ export default function Navbar() {
             ) : (
               <>
                 <Link href="/login">
-                  <Button variant="ghost" size="sm">Log In</Button>
+                  <Button variant="ghost" size="sm" className={cn("transition-colors", scrolled || menuOpen ? "" : "text-white hover:bg-white/10 hover:text-white")}>Log In</Button>
                 </Link>
                 <Link href="/register">
-                  <Button size="sm">Sign Up</Button>
+                  <Button size="sm" className={cn("transition-colors", scrolled || menuOpen ? "" : "bg-white text-blue-900 hover:bg-gray-50")}>Sign Up</Button>
                 </Link>
               </>
             )}
@@ -198,7 +198,7 @@ export default function Navbar() {
 
           {/* Mobile menu toggle */}
           <button
-            className="lg:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100"
+            className={cn("lg:hidden p-2 rounded-lg transition-colors", scrolled || menuOpen ? "text-gray-700 hover:bg-gray-100" : "text-white hover:bg-white/10")}
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}

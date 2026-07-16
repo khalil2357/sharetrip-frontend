@@ -89,7 +89,7 @@ export default function HotelsPage() {
   });
 
   return (
-    <div className="pt-16 min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50">
       {/* ── PREMIUM HOTELS HERO ── */}
       <div className="relative pt-20 pb-32 flex flex-col items-center justify-center overflow-hidden">
         {/* Background Image */}

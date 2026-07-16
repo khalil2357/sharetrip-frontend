@@ -388,7 +388,7 @@ function Section({ className, children }: { className?: string; children: React.
 // ─── Main Page ────────────────────────────────────────────────
 export default function HomePage() {
   return (
-    <div className="pt-16">
+    <div className="min-h-screen">
       {/* ── PREMIUM LUXURY HERO ─────────────────────────────────────────── */}
       <section className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden">
         {/* Background: High-end destination image with gradient overlay */}

@@ -8,7 +8,7 @@ import { INSURANCE_PLANS } from '@/lib/dummy-data';
 
 export default function InsurancePage() {
   return (
-    <div className="pt-16 min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50">
       {/* ── PREMIUM INSURANCE HERO ── */}
       <div className="relative pt-20 pb-32 flex flex-col items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">

@@ -89,6 +89,7 @@ function FlightCard({ flight }: { flight: typeof FLIGHTS[0] }) {
 }
 
 export default function FlightsPage() {
+  // ... state ...
   const [priceFilter, setPriceFilter] = useState([0, 100000]);
   const [stopFilter, setStopFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -102,7 +103,7 @@ export default function FlightsPage() {
   });
 
   return (
-    <div className="pt-16 min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50">
       {/* ── PREMIUM FLIGHTS HERO ── */}
       <div className="relative pt-20 pb-32 flex flex-col items-center justify-center overflow-hidden">
         {/* Background Image */}

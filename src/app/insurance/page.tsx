@@ -73,6 +73,7 @@ export default function InsurancePage() {
           ))}
         </div>
       </div>
+      </div>
     </div>
   );
 }

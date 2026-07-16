@@ -224,6 +224,7 @@ export default function FlightsPage() {
           </div>
         </div>
       </div>
+      </div>
     </div>
   );
 }

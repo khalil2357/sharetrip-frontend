@@ -73,6 +73,7 @@ export default function VisaPage() {
           ))}
         </div>
       </div>
+      </div>
     </div>
   );
 }

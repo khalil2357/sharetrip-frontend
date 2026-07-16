@@ -493,16 +493,16 @@ export default function HomePage() {
       </Section>
 
       {/* ── FLIGHT DEALS ─────────────────────────────────── */}
-      <Section className="bg-gray-50/50">
+      <Section className="bg-[#0A0F1C] rounded-t-[2.5rem] sm:rounded-t-[4rem] relative z-20 -mt-12 sm:-mt-16 pt-24 sm:pt-28 shadow-[0_-20px_40px_-15px_rgba(0,0,0,0.3)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div variants={fadeUp} className="flex items-end justify-between mb-12">
             <div>
-              <p className="text-blue-600 text-sm font-semibold uppercase tracking-widest mb-2">Limited Time</p>
-              <h2 className="text-4xl font-black text-gray-900" style={{letterSpacing: '-0.03em'}}>Special Flight Deals</h2>
-              <p className="text-gray-400 text-lg mt-2">Grab these offers before they&apos;re gone</p>
+              <p className="text-blue-400 text-sm font-semibold uppercase tracking-widest mb-2">Limited Time</p>
+              <h2 className="text-4xl font-black text-white" style={{letterSpacing: '-0.03em'}}>Special Flight Deals</h2>
+              <p className="text-blue-100/70 text-lg mt-2">Grab these offers before they&apos;re gone</p>
             </div>
             <Link href="/flights">
-              <Button variant="outline" size="sm" className="rounded-xl hidden sm:flex gap-1.5">
+              <Button variant="outline" size="sm" className="rounded-xl hidden sm:flex gap-1.5 border-white/20 text-white hover:bg-white/10 hover:text-white">
                 All Flights <ChevronRight size={15} />
               </Button>
             </Link>

@@ -468,7 +468,7 @@ export default function HomePage() {
       </section>
 
       {/* ── POPULAR DESTINATIONS ─────────────────────────── */}
-      <Section className="bg-white">
+      <Section className="bg-white rounded-t-[2.5rem] sm:rounded-t-[4rem] relative z-20 -mt-12 sm:-mt-16 pt-24 sm:pt-28 shadow-[0_-20px_40px_-15px_rgba(0,0,0,0.1)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div variants={fadeUp} className="flex items-end justify-between mb-12">
             <div>

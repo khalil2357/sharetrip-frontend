@@ -103,56 +103,75 @@ export default function FlightsPage() {
 
   return (
     <div className="pt-16 min-h-screen bg-gray-50">
-      {/* Search Header */}
-      <div className="bg-blue-600 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2 mb-4">
-            <Link href="/" className="text-blue-200 hover:text-white flex items-center gap-1 text-sm"><ArrowLeft size={14} /> Home</Link>
-            <span className="text-blue-300">/</span>
-            <span className="text-white text-sm">Flights</span>
+      {/* ── PREMIUM FLIGHTS HERO ── */}
+      <div className="relative pt-20 pb-32 flex flex-col items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=3000&q=80" 
+            alt="Luxury Flight" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+        </div>
+
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <Link href="/" className="text-white/70 hover:text-white flex items-center gap-1 text-sm font-medium transition-colors"><ArrowLeft size={14} /> Home</Link>
+            <span className="text-white/40">/</span>
+            <span className="text-white text-sm font-medium">Flights</span>
           </div>
-          <h1 className="text-2xl font-black text-white mb-4">Search Flights</h1>
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 flex gap-3 flex-wrap">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white mb-6" style={{letterSpacing: '-0.02em'}}>
+            Take to the <span className="italic font-light">Skies</span>
+          </h1>
+          <p className="text-white/80 text-lg mb-10 max-w-2xl mx-auto">
+            Book premium flights globally. Experience comfort and reliability every time you fly.
+          </p>
+          
+          <div className="max-w-4xl mx-auto bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-4 flex gap-3 flex-wrap shadow-2xl">
             <div className="relative flex-1 min-w-48">
-              <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-200" />
+              <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/60" />
               <input
-                className="w-full pl-9 pr-3 h-10 bg-white/20 text-white placeholder:text-blue-200 rounded-xl text-sm border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/30"
+                className="w-full pl-9 pr-3 h-12 bg-white/10 text-white placeholder:text-white/60 rounded-2xl text-sm border border-white/10 focus:outline-none focus:border-white/30 focus:bg-white/20 transition-all"
                 placeholder="From... e.g. Dhaka"
               />
             </div>
             <div className="relative flex-1 min-w-48">
-              <Plane size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-200" />
+              <Plane size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/60" />
               <input
-                className="w-full pl-9 pr-3 h-10 bg-white/20 text-white placeholder:text-blue-200 rounded-xl text-sm border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/30"
+                className="w-full pl-9 pr-3 h-12 bg-white/10 text-white placeholder:text-white/60 rounded-2xl text-sm border border-white/10 focus:outline-none focus:border-white/30 focus:bg-white/20 transition-all"
                 placeholder="To... e.g. Dubai"
               />
             </div>
-            <Button className="bg-white text-blue-600 hover:bg-blue-50 h-10 px-6">
-              <Search size={15} /> Search
+            <Button className="bg-white text-blue-900 hover:bg-gray-50 h-12 px-8 rounded-2xl font-bold">
+              <Search size={15} className="mr-2" /> Search
             </Button>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex gap-6">
-          {/* Filter Sidebar */}
-          <aside className="hidden lg:block w-64 flex-shrink-0">
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sticky top-24">
-              <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <SlidersHorizontal size={16} className="text-blue-600" /> Filters
-              </h3>
+      {/* ── MAIN CONTENT (OVERLAPPING SECTION) ── */}
+      <div className="bg-gray-50 rounded-t-[3rem] relative z-20 -mt-16 pt-12 pb-24 shadow-[0_-20px_40px_-15px_rgba(0,0,0,0.3)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-8">
+            {/* Filter Sidebar */}
+            <aside className="w-full lg:w-72 flex-shrink-0">
+              <div className="bg-white rounded-3xl shadow-sm border border-gray-100/50 p-6 sticky top-24">
+                <h3 className="font-bold text-gray-900 mb-5 flex items-center gap-2">
+                  <SlidersHorizontal size={16} className="text-blue-600" /> Filters
+                </h3>
 
-              <div className="mb-5">
-                <h4 className="text-sm font-semibold text-gray-700 mb-3">Stops</h4>
-                {[{ value: 'all', label: 'All Flights' }, { value: 'nonstop', label: 'Non-stop Only' }, { value: 'stop', label: '1+ Stops' }].map((opt) => (
-                  <label key={opt.value} className="flex items-center gap-2 mb-2 cursor-pointer">
-                    <input type="radio" name="stops" value={opt.value} checked={stopFilter === opt.value}
-                      onChange={() => setStopFilter(opt.value)} className="accent-blue-600" />
-                    <span className="text-sm text-gray-600">{opt.label}</span>
-                  </label>
-                ))}
-              </div>
+                <div className="mb-6 pt-5 border-t border-gray-50">
+                  <h4 className="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wider">Stops</h4>
+                  {[{ value: 'all', label: 'All Flights' }, { value: 'nonstop', label: 'Non-stop Only' }, { value: 'stop', label: '1+ Stops' }].map((opt) => (
+                    <label key={opt.value} className="flex items-center gap-3 mb-3 cursor-pointer group">
+                      <input type="radio" name="stops" value={opt.value} checked={stopFilter === opt.value}
+                        onChange={() => setStopFilter(opt.value)} className="w-4 h-4 accent-blue-600" />
+                      <span className="text-sm text-gray-600 group-hover:text-gray-900 transition-colors">{opt.label}</span>
+                    </label>
+                  ))}
+                </div>
 
               <div className="mb-5">
                 <h4 className="text-sm font-semibold text-gray-700 mb-3">Airlines</h4>

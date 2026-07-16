@@ -74,16 +74,37 @@ export default function ToursPage() {
 
   return (
     <div className="pt-16 min-h-screen bg-gray-50">
-      <div className="bg-gradient-to-r from-blue-600 to-indigo-700 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl font-black text-white mb-2">Explore Tour Packages</h1>
-          <p className="text-blue-200 mb-6">Discover handpicked packages for unforgettable adventures</p>
-          <div className="flex gap-2 justify-center">
+      {/* ── PREMIUM TOURS HERO ── */}
+      <div className="relative pt-20 pb-32 flex flex-col items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=3000&q=80" 
+            alt="Scenic Tour" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+        </div>
+
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <Link href="/" className="text-white/70 hover:text-white flex items-center gap-1 text-sm font-medium transition-colors"><ChevronRight size={14} className="rotate-180" /> Home</Link>
+            <span className="text-white/40">/</span>
+            <span className="text-white text-sm font-medium">Tours</span>
+          </div>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white mb-6" style={{letterSpacing: '-0.02em'}}>
+            Explore the <span className="italic font-light">Unseen</span>
+          </h1>
+          <p className="text-white/80 text-lg mb-10 max-w-2xl mx-auto">
+            Discover handpicked packages for unforgettable adventures around the globe.
+          </p>
+          
+          <div className="flex gap-3 justify-center flex-wrap relative z-20">
             {['all', 'domestic', 'international'].map((t) => (
               <button
                 key={t}
                 onClick={() => setTypeFilter(t)}
-                className={`px-5 py-2 rounded-full text-sm font-semibold transition-all capitalize ${typeFilter === t ? 'bg-white text-blue-600' : 'bg-white/20 text-white hover:bg-white/30'}`}
+                className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all capitalize border ${typeFilter === t ? 'bg-white text-blue-900 border-white shadow-lg' : 'bg-white/10 text-white border-white/30 hover:bg-white/20 backdrop-blur-md'}`}
               >
                 {t === 'all' ? 'All Packages' : `${t} Tours`}
               </button>
@@ -92,12 +113,14 @@ export default function ToursPage() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex gap-6">
-        <aside className="hidden lg:block w-64 flex-shrink-0">
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sticky top-24">
-            <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2"><Filter size={16} className="text-blue-600" /> Filters</h3>
-            <div className="mb-5">
-              <h4 className="text-sm font-semibold text-gray-700 mb-3">Budget</h4>
+      {/* ── MAIN CONTENT (OVERLAPPING SECTION) ── */}
+      <div className="bg-gray-50 rounded-t-[3rem] relative z-20 -mt-16 pt-12 pb-24 shadow-[0_-20px_40px_-15px_rgba(0,0,0,0.3)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row gap-8">
+          <aside className="w-full lg:w-72 flex-shrink-0">
+            <div className="bg-white rounded-3xl shadow-sm border border-gray-100/50 p-6 sticky top-24">
+              <h3 className="font-bold text-gray-900 mb-5 flex items-center gap-2"><Filter size={16} className="text-blue-600" /> Filters</h3>
+              <div className="mb-6 pt-5 border-t border-gray-50">
+                <h4 className="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wider">Budget</h4>
               <input type="range" min="0" max="200000" className="w-full accent-blue-600" />
               <div className="flex justify-between text-xs text-gray-400 mt-1"><span>৳0</span><span>৳2,00,000</span></div>
             </div>

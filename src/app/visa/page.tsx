@@ -9,16 +9,33 @@ import { VISA_COUNTRIES } from '@/lib/dummy-data';
 export default function VisaPage() {
   return (
     <div className="pt-16 min-h-screen bg-gray-50">
-      <div className="bg-gradient-to-r from-indigo-600 to-blue-700 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <Globe size={40} className="mx-auto mb-4 opacity-80" />
-          <h1 className="text-3xl font-black mb-2">Visa Services</h1>
-          <p className="text-indigo-200">Fast, reliable, and hassle-free visa processing for 50+ countries</p>
+      {/* ── PREMIUM VISA HERO ── */}
+      <div className="relative pt-20 pb-32 flex flex-col items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1559599189-fe84dea4eb79?auto=format&fit=crop&w=3000&q=80" 
+            alt="Travel Visa" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+        </div>
+
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <Globe size={48} className="mx-auto mb-6 text-white/90 drop-shadow-lg" />
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white mb-6" style={{letterSpacing: '-0.02em'}}>
+            Global <span className="italic font-light">Access</span>
+          </h1>
+          <p className="text-white/80 text-lg mb-10 max-w-2xl mx-auto">
+            Fast, reliable, and hassle-free visa processing for 50+ countries worldwide.
+          </p>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* ── MAIN CONTENT (OVERLAPPING SECTION) ── */}
+      <div className="bg-gray-50 rounded-t-[3rem] relative z-20 -mt-16 pt-16 pb-24 shadow-[0_-20px_40px_-15px_rgba(0,0,0,0.3)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {VISA_COUNTRIES.map((visa, i) => (
             <motion.div key={visa.id}
               initial={{ opacity: 0, y: 20 }}

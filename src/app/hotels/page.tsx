@@ -95,7 +95,7 @@ export default function HotelsPage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1542314831-c6a4d14d8373?q=80&w=3450&auto=format&fit=crop" 
+            src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=3000&q=80" 
             alt="Luxury Hotel" 
             className="w-full h-full object-cover"
           />

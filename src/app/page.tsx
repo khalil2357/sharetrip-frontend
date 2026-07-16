@@ -389,105 +389,106 @@ function Section({ className, children }: { className?: string; children: React.
 export default function HomePage() {
   return (
     <div className="pt-16">
-      {/* ── HERO ─────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-        {/* Background: Deep cinematic gradient */}
-        <div className="absolute inset-0 hero-gradient" />
+      {/* ── 2040 HERO ─────────────────────────────────────────── */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#030712]">
+        {/* Background: Futuristic 2040 Grid & Aurora */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+          <div className="absolute top-0 w-full h-[500px] bg-gradient-to-b from-blue-900/20 via-cyan-900/5 to-transparent" />
+        </div>
 
-        {/* Ambient orbs — Apple-style depth */}
-        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-cyan-400/15 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-800/10 rounded-full blur-[150px] pointer-events-none" />
+        {/* Ambient 2040 Orbs */}
+        <div className="absolute top-1/3 left-1/4 w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] bg-blue-600/20 rounded-full blur-[130px] pointer-events-none mix-blend-screen animate-pulse" style={{ animationDuration: '8s' }} />
+        <div className="absolute bottom-1/3 right-1/4 w-[50vw] h-[50vw] max-w-[600px] max-h-[600px] bg-cyan-400/15 rounded-full blur-[120px] pointer-events-none mix-blend-screen animate-pulse" style={{ animationDuration: '10s' }} />
 
-        {/* Subtle noise grain overlay */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' /%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' /%3E%3C/svg%3E")'}} />
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          {/* Eyebrow badge */}
+          {/* Futuristic Eyebrow */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="flex justify-center mb-8"
           >
-            <div className="flex items-center gap-2 glass-dark rounded-full px-5 py-2.5 text-sm border border-white/10">
-              <Sparkles size={14} className="text-blue-300" />
-              <span className="text-blue-200 font-medium">Premium Travel Experience</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-emerald-400 text-xs font-semibold">Live Deals</span>
+            <div className="flex items-center gap-2.5 bg-white/5 backdrop-blur-2xl rounded-full px-5 py-2 border border-white/10 shadow-[0_0_30px_rgba(59,130,246,0.15)] relative overflow-hidden group cursor-pointer">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-cyan-400/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.8)] animate-pulse" />
+              <span className="text-cyan-50 text-xs font-semibold tracking-[0.2em] uppercase">SkyRoute v2.0 Online</span>
             </div>
           </motion.div>
 
-          {/* Hero headline — Apple-scale typography */}
+          {/* 2040 Typography */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-center mb-6"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center mb-12 relative"
           >
-            <h1 className="text-6xl sm:text-7xl lg:text-[88px] font-black text-white leading-[0.95] mb-6" style={{letterSpacing: '-0.04em'}}>
-              The World<br />
-              <span className="bg-gradient-to-r from-blue-300 via-cyan-300 to-sky-400 bg-clip-text text-transparent">
-                Awaits You.
+            <h1 className="text-[5rem] sm:text-[7rem] lg:text-[9rem] font-black text-white leading-[0.85] tracking-tighter mix-blend-plus-lighter">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/40 pb-2">
+                BEYOND
+              </span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-400">
+                HORIZONS
               </span>
             </h1>
-            <p className="text-blue-200/80 text-xl sm:text-2xl max-w-2xl mx-auto leading-relaxed" style={{letterSpacing: '-0.01em'}}>
-              Flights, hotels, tours, visa — everything you need to travel better, in one place.
+            <p className="text-blue-100/60 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mt-8 font-light tracking-wide">
+              The next generation travel intelligence platform. Seamless, predictive, and designed for the future of exploration.
             </p>
           </motion.div>
 
-          {/* CTA Buttons */}
+          {/* Search widget — 2040 Glass Panel HUD */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="flex flex-wrap items-center justify-center gap-4 mb-12"
+            transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-4xl mx-auto relative group"
           >
-            <Link href="/flights">
-              <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-50 font-semibold rounded-2xl px-8 h-14 text-base shadow-2xl shadow-black/20 gap-2.5 transition-all duration-200 hover:scale-105">
-                <Plane size={18} className="text-blue-600" /> Book a Flight
-              </Button>
-            </Link>
-            <Link href="/tours">
-              <Button size="lg" variant="outline" className="border-white/25 bg-white/10 text-white hover:bg-white/20 font-semibold rounded-2xl px-8 h-14 text-base backdrop-blur-sm gap-2 transition-all duration-200 hover:scale-105">
-                Explore Tours <ArrowRight size={16} />
-              </Button>
-            </Link>
+            {/* Holographic Border Glow */}
+            <div className="absolute -inset-[1px] bg-gradient-to-r from-blue-500/30 via-cyan-400/30 to-purple-500/30 rounded-[2rem] blur-sm opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <div className="relative bg-[#0A0F1C]/80 backdrop-blur-3xl rounded-[2rem] border border-white/10 shadow-2xl shadow-blue-900/20 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
+              <SearchWidget />
+            </div>
           </motion.div>
 
-          {/* Stats row */}
+          {/* Floating UI Elements (2040 style stats) */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex justify-center gap-10 mb-14"
+            transition={{ duration: 1, delay: 0.8 }}
+            className="hidden lg:flex absolute top-1/2 -left-12 -translate-y-1/2 flex-col gap-4 pointer-events-none"
           >
-            {[
-              { value: '50K+', label: 'Happy Travelers' },
-              { value: '200+', label: 'Destinations' },
-              { value: '4.9★', label: 'Average Rating' },
-            ].map((stat, i) => (
-              <div key={stat.label} className="text-center">
-                <p className="text-2xl sm:text-3xl font-black text-white" style={{letterSpacing: '-0.04em'}}>{stat.value}</p>
-                <p className="text-blue-300/70 text-xs sm:text-sm mt-0.5">{stat.label}</p>
-              </div>
-            ))}
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-4 rounded-2xl w-32 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+              <div className="text-cyan-400 text-xs font-mono mb-1">LATITUDE</div>
+              <div className="text-white font-bold text-lg">23.8103°</div>
+            </div>
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-4 rounded-2xl w-32 shadow-[0_8px_32px_rgba(0,0,0,0.4)] translate-x-8">
+              <div className="text-blue-400 text-xs font-mono mb-1">LONGITUDE</div>
+              <div className="text-white font-bold text-lg">90.4125°</div>
+            </div>
           </motion.div>
 
-          {/* Search widget — full-width, glassmorphic */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="max-w-4xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.9 }}
+            className="hidden lg:flex absolute top-1/2 -right-12 -translate-y-1/2 flex-col gap-4 pointer-events-none items-end"
           >
-            <SearchWidget />
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-4 rounded-2xl w-36 shadow-[0_8px_32px_rgba(0,0,0,0.4)] text-right">
+              <div className="text-purple-400 text-xs font-mono mb-1">NETWORK</div>
+              <div className="text-white font-bold text-lg">192+ Nodes</div>
+            </div>
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-4 rounded-2xl w-36 shadow-[0_8px_32px_rgba(0,0,0,0.4)] -translate-x-8 text-right">
+              <div className="text-emerald-400 text-xs font-mono mb-1">UPTIME</div>
+              <div className="text-white font-bold text-lg">99.999%</div>
+            </div>
           </motion.div>
         </div>
 
-        {/* Bottom fade into white */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
+        {/* Bottom fade into the white sections below */}
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-white via-white/80 to-transparent z-20 pointer-events-none" />
       </section>
 
       {/* ── POPULAR DESTINATIONS ─────────────────────────── */}

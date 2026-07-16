@@ -2,11 +2,11 @@
 
 import { useAuthStore } from '@/store';
 import { useRouter, usePathname } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import {
   LayoutDashboard, Users, Plane, Hotel, Package, Globe, CreditCard,
-  Ticket, BarChart3, Settings, FileText, LogOut, Tag, Image, HelpCircle, Menu
+  Ticket, BarChart3, Settings, FileText, LogOut, Tag, Image, HelpCircle, Menu, ChevronLeft, ChevronRight
 } from 'lucide-react';
 
 const sidebarNav = [
@@ -38,6 +38,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const { isAuthenticated, isAdmin, user, logout } = useAuthStore();
   const router = useRouter();
   const pathname = usePathname();
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   useEffect(() => {
     if (!isAuthenticated || !isAdmin) router.push('/login');
@@ -48,41 +49,59 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
       {/* Desktop Sidebar (Hidden on Mobile) */}
-      <aside className="hidden lg:flex flex-col w-64 bg-white border-r border-gray-100 flex-shrink-0 z-40">
-        <div className="p-4 border-b border-gray-100 h-16 flex items-center justify-between">
-          <Link href="/" className="font-bold text-xl text-gray-900">
-            Sky<span className="text-blue-600">Route</span>
-          </Link>
-          <span className="bg-red-100 text-red-700 text-xs font-black px-2 py-0.5 rounded uppercase">Admin</span>
+      <aside className={`hidden lg:flex flex-col bg-white border-r border-gray-100 flex-shrink-0 z-40 relative transition-all duration-300 ${isCollapsed ? 'w-20' : 'w-64'}`}>
+        <div className="p-4 border-b border-gray-100 h-16 flex items-center justify-between relative">
+          {!isCollapsed && (
+            <>
+              <Link href="/" className="font-bold text-xl text-gray-900">
+                Sky<span className="text-blue-600">Route</span>
+              </Link>
+              <span className="bg-red-100 text-red-700 text-[10px] font-black px-1.5 py-0.5 rounded uppercase">Admin</span>
+            </>
+          )}
+          {isCollapsed && (
+            <Link href="/" className="font-bold text-xl text-gray-900 mx-auto">
+              S<span className="text-blue-600">R</span>
+            </Link>
+          )}
+          <button 
+            onClick={() => setIsCollapsed(!isCollapsed)}
+            className="absolute -right-3 top-5 bg-white border border-gray-200 rounded-full p-1 text-gray-500 hover:text-blue-600 z-50 shadow-sm"
+          >
+            {isCollapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
+          </button>
         </div>
-        <div className="p-4 border-b border-gray-100">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center text-white text-xs font-black shadow-sm">
-              A
-            </div>
+        <div className={`p-4 border-b border-gray-100 flex ${isCollapsed ? 'justify-center' : 'items-center gap-2'}`}>
+          <div className="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center text-white text-xs font-black shadow-sm flex-shrink-0">
+            A
+          </div>
+          {!isCollapsed && (
             <div className="min-w-0">
               <p className="font-bold text-gray-900 text-sm truncate">{user?.name}</p>
               <p className="text-xs text-gray-400 truncate">{user?.email}</p>
             </div>
-          </div>
+          )}
         </div>
         <nav className="flex-1 p-3 space-y-0.5 overflow-y-auto">
           {sidebarNav.map((item) => {
             const isActive = pathname === item.href;
             return (
               <Link key={item.href} href={item.href}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${isActive ? 'bg-blue-50 text-blue-600' : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'}`}
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${isActive ? 'bg-blue-50 text-blue-600' : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'} ${isCollapsed ? 'justify-center' : ''}`}
+                title={isCollapsed ? item.label : undefined}
               >
-                <item.icon size={16} />
-                {item.label}
+                <item.icon size={16} className="flex-shrink-0" />
+                {!isCollapsed && item.label}
               </Link>
             );
           })}
         </nav>
         <div className="p-4 border-t border-gray-100">
           <button onClick={() => { logout(); router.push('/'); }}
-            className="flex items-center gap-2 text-sm text-red-600 font-medium hover:bg-red-50 w-full px-3 py-2.5 rounded-xl transition-colors">
-            <LogOut size={15} /> Log Out
+            className={`flex items-center gap-2 text-sm text-red-600 font-medium hover:bg-red-50 w-full px-3 py-2.5 rounded-xl transition-colors ${isCollapsed ? 'justify-center' : ''}`}
+            title={isCollapsed ? 'Log Out' : undefined}
+          >
+            <LogOut size={15} className="flex-shrink-0" /> {!isCollapsed && 'Log Out'}
           </button>
         </div>
       </aside>

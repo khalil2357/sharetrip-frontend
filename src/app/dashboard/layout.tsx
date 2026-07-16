@@ -2,10 +2,10 @@
 
 import { useAuthStore } from '@/store';
 import { useRouter, usePathname } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import {
-  LayoutDashboard, Ticket, Heart, Bell, Settings, User, LogOut
+  LayoutDashboard, Ticket, Heart, Bell, Settings, User, LogOut, ChevronLeft, ChevronRight
 } from 'lucide-react';
 
 const navItems = [
@@ -20,6 +20,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const { isAuthenticated, user, logout } = useAuthStore();
   const router = useRouter();
   const pathname = usePathname();
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   useEffect(() => {
     if (!isAuthenticated) router.push('/login');
@@ -30,22 +31,35 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
       {/* Desktop Sidebar (Hidden on Mobile) */}
-      <aside className="hidden lg:flex flex-col w-64 bg-white border-r border-gray-100 flex-shrink-0">
-        <div className="p-5 border-b border-gray-100 h-16 flex items-center">
-          <Link href="/" className="font-bold text-xl text-gray-900">
-            Sky<span className="text-blue-600">Route</span>
-          </Link>
+      <aside className={`hidden lg:flex flex-col bg-white border-r border-gray-100 flex-shrink-0 transition-all duration-300 ${isCollapsed ? 'w-20' : 'w-64'}`}>
+        <div className="p-5 border-b border-gray-100 h-16 flex items-center justify-between">
+          {!isCollapsed && (
+            <Link href="/" className="font-bold text-xl text-gray-900">
+              Sky<span className="text-blue-600">Route</span>
+            </Link>
+          )}
+          {isCollapsed && (
+            <Link href="/" className="font-bold text-xl text-gray-900 mx-auto">
+              S<span className="text-blue-600">R</span>
+            </Link>
+          )}
+          <button 
+            onClick={() => setIsCollapsed(!isCollapsed)}
+            className="absolute -right-3 top-5 bg-white border border-gray-200 rounded-full p-1 text-gray-500 hover:text-blue-600 z-50 shadow-sm"
+          >
+            {isCollapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
+          </button>
         </div>
-        <div className="p-5 border-b border-gray-100">
-          <div className="flex items-center gap-3">
-            <div className="w-11 h-11 bg-blue-600 rounded-xl flex items-center justify-center text-white font-bold shadow-sm">
-              {user?.name?.slice(0, 2).toUpperCase()}
-            </div>
+        <div className={`p-5 border-b border-gray-100 flex ${isCollapsed ? 'justify-center' : 'items-center gap-3'}`}>
+          <div className="w-11 h-11 bg-blue-600 rounded-xl flex items-center justify-center text-white font-bold shadow-sm flex-shrink-0">
+            {user?.name?.slice(0, 2).toUpperCase()}
+          </div>
+          {!isCollapsed && (
             <div className="min-w-0">
               <p className="font-bold text-gray-900 truncate text-sm">{user?.name}</p>
               <p className="text-xs text-gray-400 truncate">{user?.email}</p>
             </div>
-          </div>
+          )}
         </div>
 
         <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
@@ -53,27 +67,30 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             const isActive = pathname === item.href;
             return (
               <Link key={item.href} href={item.href}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${isActive ? 'bg-blue-50 text-blue-600' : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'}`}
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${isActive ? 'bg-blue-50 text-blue-600' : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'} ${isCollapsed ? 'justify-center' : ''}`}
+                title={isCollapsed ? item.label : undefined}
               >
-                <item.icon size={17} />
-                {item.label}
+                <item.icon size={17} className="flex-shrink-0" />
+                {!isCollapsed && item.label}
               </Link>
             );
           })}
           <Link href="/dashboard/settings"
-            className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${pathname === '/dashboard/settings' ? 'bg-blue-50 text-blue-600' : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'}`}
+            className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${pathname === '/dashboard/settings' ? 'bg-blue-50 text-blue-600' : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'} ${isCollapsed ? 'justify-center' : ''}`}
+            title={isCollapsed ? 'Settings' : undefined}
           >
-            <Settings size={17} />
-            Settings
+            <Settings size={17} className="flex-shrink-0" />
+            {!isCollapsed && 'Settings'}
           </Link>
         </nav>
 
         <div className="p-4 border-t border-gray-100">
           <button
             onClick={() => { logout(); router.push('/'); }}
-            className="flex items-center gap-2 w-full px-3 py-2.5 rounded-xl text-sm font-medium text-red-600 hover:bg-red-50 transition-colors"
+            className={`flex items-center gap-2 w-full px-3 py-2.5 rounded-xl text-sm font-medium text-red-600 hover:bg-red-50 transition-colors ${isCollapsed ? 'justify-center' : ''}`}
+            title={isCollapsed ? 'Log Out' : undefined}
           >
-            <LogOut size={17} /> Log Out
+            <LogOut size={17} className="flex-shrink-0" /> {!isCollapsed && 'Log Out'}
           </button>
         </div>
       </aside>

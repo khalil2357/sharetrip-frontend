@@ -7,7 +7,7 @@ export default function ContactPage() {
       <div className="bg-blue-600 py-12">
         <div className="max-w-7xl mx-auto px-4 text-center text-white">
           <h1 className="text-3xl font-black mb-2">Contact Us</h1>
-          <p className="text-blue-100">We're here to help you plan your perfect trip</p>
+          <p className="text-blue-100">We&apos;re here to help you plan your perfect trip</p>
         </div>
       </div>
       

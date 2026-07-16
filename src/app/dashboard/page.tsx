@@ -11,7 +11,7 @@ import {
 import { BOOKINGS, NOTIFICATIONS } from '@/lib/dummy-data';
 import { Badge } from '@/components/ui/badge';
 
-function StatCard({ icon: Icon, label, value, color }: { icon: any; label: string; value: string | number; color: string }) {
+function StatCard({ icon: Icon, label, value, color }: { icon: React.ElementType; label: string; value: string | number; color: string }) {
   return (
     <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex items-center gap-4">
       <div className={`w-12 h-12 ${color} rounded-xl flex items-center justify-center flex-shrink-0`}>
@@ -75,6 +75,7 @@ export default function DashboardPage() {
                   <p className="text-xs text-gray-400">{booking.id} · {booking.type}</p>
                 </div>
                 <div className="text-right">
+                  {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                   <Badge variant={(statusColor[booking.status] as any) || 'default'}>{booking.status}</Badge>
                   <p className="text-sm font-bold text-gray-900 mt-1">৳{booking.amount.toLocaleString()}</p>
                 </div>

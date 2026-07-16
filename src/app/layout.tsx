@@ -1,13 +1,6 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "@/components/layout/ClientLayout";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "SkyRoute — Book Flights, Hotels & Tours",
@@ -21,8 +14,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className="bg-gray-50 text-gray-900 antialiased min-h-screen flex flex-col">
+    <html lang="en">
+      <body className="bg-white text-gray-900 antialiased min-h-screen flex flex-col">
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>

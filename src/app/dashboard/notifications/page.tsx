@@ -34,6 +34,7 @@ export default function NotificationsPage() {
                   <div>
                     <div className="flex items-center gap-2 mb-1">
                       <p className="font-semibold text-gray-900 text-sm">{notif.title}</p>
+                      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                       <Badge variant={typeBadge[notif.type] as any} className="text-xs">{notif.type}</Badge>
                     </div>
                     <p className="text-sm text-gray-600">{notif.message}</p>

@@ -54,11 +54,14 @@ export default function BookingsPage() {
                     <div>
                       <p className="font-bold text-gray-900">{booking.title}</p>
                       <p className="text-xs text-gray-400 mt-0.5">{booking.id} · {booking.type}</p>
+                      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                       {'date' in booking && <p className="text-xs text-gray-500 mt-0.5">Date: {(booking as any).date}</p>}
+                      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                       {'checkIn' in booking && <p className="text-xs text-gray-500 mt-0.5">Check-in: {(booking as any).checkIn} · Check-out: {(booking as any).checkOut}</p>}
                     </div>
                   </div>
                   <div className="text-right">
+                    {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                     <Badge variant={statusColor[booking.status] as any}>{booking.status}</Badge>
                     <p className="text-xl font-black text-gray-900 mt-2">৳{booking.amount.toLocaleString()}</p>
                   </div>

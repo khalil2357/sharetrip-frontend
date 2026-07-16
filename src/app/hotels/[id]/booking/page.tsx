@@ -53,7 +53,7 @@ export default function HotelBookingPage() {
           <h2 className="text-2xl font-black text-gray-900 mb-2">Booking Confirmed!</h2>
           <p className="text-gray-500 mb-6">Your stay at {hotel.name} has been booked successfully. Redirecting to your bookings...</p>
           <div className="bg-gray-50 rounded-xl p-4 text-left border border-gray-100">
-            <div className="flex justify-between text-sm mb-2"><span className="text-gray-500">Booking ID</span><span className="font-bold text-gray-900">BKG-{Math.floor(Math.random() * 10000)}</span></div>
+            <div className="flex justify-between text-sm mb-2"><span className="text-gray-500">Booking ID</span><span className="font-bold text-gray-900">BKG-7829</span></div>
             <div className="flex justify-between text-sm mb-2"><span className="text-gray-500">Check-in</span><span className="font-bold text-gray-900">{form.checkIn}</span></div>
             <div className="flex justify-between text-sm"><span className="text-gray-500">Total Paid</span><span className="font-bold text-blue-600">৳{total.toLocaleString()}</span></div>
           </div>

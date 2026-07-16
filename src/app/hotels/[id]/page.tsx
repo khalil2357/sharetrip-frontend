@@ -24,7 +24,7 @@ export default function HotelDetailsPage({ params }: { params: { id: string } })
             </div>
             <h1 className="text-3xl lg:text-4xl font-black text-gray-900 mb-2">Grand Sea View Resort & Spa</h1>
             <p className="text-gray-500 flex items-center gap-1.5">
-              <MapPin size={16} className="text-gray-400" /> 123 Ocean Drive, Cox's Bazar, Bangladesh
+              <MapPin size={16} className="text-gray-400" /> 123 Ocean Drive, Cox&apos;s Bazar, Bangladesh
             </p>
           </div>
           <div className="text-left md:text-right">
@@ -59,7 +59,7 @@ export default function HotelDetailsPage({ params }: { params: { id: string } })
             <div className="bg-white rounded-3xl p-6 lg:p-8 shadow-sm border border-gray-100">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">About this property</h2>
               <p className="text-gray-600 leading-relaxed text-sm">
-                Experience unparalleled luxury at the Grand Sea View Resort & Spa. Located directly on the world's longest unbroken sea beach, our resort offers stunning ocean views, world-class dining, and an award-winning spa. Whether you're here for a romantic getaway or a family vacation, our state-of-the-art facilities and warm hospitality ensure an unforgettable stay.
+                Experience unparalleled luxury at the Grand Sea View Resort & Spa. Located directly on the world&apos;s longest unbroken sea beach, our resort offers stunning ocean views, world-class dining, and an award-winning spa. Whether you&apos;re here for a romantic getaway or a family vacation, our state-of-the-art facilities and warm hospitality ensure an unforgettable stay.
               </p>
               
               <h3 className="font-bold text-gray-900 mt-6 mb-4">Most Popular Facilities</h3>

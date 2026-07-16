@@ -44,7 +44,7 @@ export default function LoginPage() {
         <div className="absolute inset-0 opacity-20">
           {[...Array(20)].map((_, i) => (
             <div key={i} className="absolute rounded-full bg-white"
-              style={{ width: Math.random() * 200 + 50, height: Math.random() * 200 + 50, left: `${Math.random() * 100}%`, top: `${Math.random() * 100}%`, opacity: Math.random() * 0.3 }}
+              style={{ width: (i * 17) % 200 + 50, height: (i * 23) % 200 + 50, left: `${(i * 31) % 100}%`, top: `${(i * 37) % 100}%`, opacity: ((i * 41) % 30) / 100 }}
             />
           ))}
         </div>

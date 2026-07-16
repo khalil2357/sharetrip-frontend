@@ -145,7 +145,7 @@ export default function Navbar() {
                     )}
                   </Button>
                 </Link>
-                <Link href="/notifications">
+                <Link href="/dashboard/notifications">
                   <Button variant="ghost" size="icon">
                     <Bell size={18} />
                   </Button>

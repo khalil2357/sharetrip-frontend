@@ -90,61 +90,85 @@ export default function HotelsPage() {
 
   return (
     <div className="pt-16 min-h-screen bg-gray-50">
-      <div className="bg-blue-600 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-2xl font-black text-white mb-4">Search Hotels</h1>
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 flex gap-3 flex-wrap">
+      {/* ── PREMIUM HOTELS HERO ── */}
+      <div className="relative pt-20 pb-32 flex flex-col items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1542314831-c6a4d14d8373?q=80&w=3450&auto=format&fit=crop" 
+            alt="Luxury Hotel" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+        </div>
+
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white mb-6" style={{letterSpacing: '-0.02em'}}>
+            Find Your <span className="italic font-light">Perfect</span> Stay
+          </h1>
+          <p className="text-white/80 text-lg mb-10 max-w-2xl mx-auto">
+            Discover handpicked luxury hotels, resorts, and boutique stays around the world.
+          </p>
+          
+          <div className="max-w-4xl mx-auto bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-4 flex gap-3 flex-wrap shadow-2xl">
             <div className="relative flex-1 min-w-48">
-              <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-200" />
-              <input className="w-full pl-9 pr-3 h-10 bg-white/20 text-white placeholder:text-blue-200 rounded-xl text-sm border border-white/20 focus:outline-none" placeholder="Destination or Hotel Name" />
+              <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/60" />
+              <input className="w-full pl-9 pr-3 h-12 bg-white/10 text-white placeholder:text-white/60 rounded-2xl text-sm border border-white/10 focus:outline-none focus:border-white/30 focus:bg-white/20 transition-all" placeholder="Destination or Hotel Name" />
             </div>
-            <input type="date" className="h-10 px-3 bg-white/20 text-white rounded-xl text-sm border border-white/20 focus:outline-none" />
-            <input type="date" className="h-10 px-3 bg-white/20 text-white rounded-xl text-sm border border-white/20 focus:outline-none" />
-            <Button className="bg-white text-blue-600 hover:bg-blue-50 h-10 px-6"><Search size={15} /> Search</Button>
+            <input type="date" className="h-12 px-4 bg-white/10 text-white rounded-2xl text-sm border border-white/10 focus:outline-none focus:border-white/30 focus:bg-white/20 transition-all" />
+            <input type="date" className="h-12 px-4 bg-white/10 text-white rounded-2xl text-sm border border-white/10 focus:outline-none focus:border-white/30 focus:bg-white/20 transition-all" />
+            <Button className="bg-white text-blue-900 hover:bg-gray-50 h-12 px-8 rounded-2xl font-bold"><Search size={15} className="mr-2" /> Search</Button>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex gap-6">
-        <aside className="hidden lg:block w-64 flex-shrink-0">
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sticky top-24">
-            <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2"><SlidersHorizontal size={16} className="text-blue-600" /> Filters</h3>
+      {/* ── MAIN CONTENT (OVERLAPPING SECTION) ── */}
+      <div className="bg-gray-50 rounded-t-[3rem] relative z-20 -mt-16 pt-12 pb-24 shadow-[0_-20px_40px_-15px_rgba(0,0,0,0.3)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row gap-8">
+          {/* Filters Sidebar */}
+          <aside className="w-full lg:w-72 flex-shrink-0">
+            <div className="bg-white rounded-3xl shadow-sm border border-gray-100/50 p-6 sticky top-24">
+              <h3 className="font-bold text-gray-900 mb-5 flex items-center gap-2"><SlidersHorizontal size={16} className="text-blue-600" /> Filters</h3>
 
-            <div className="mb-5">
-              <h4 className="text-sm font-semibold text-gray-700 mb-3">Hotel Type</h4>
-              {['all', 'luxury', 'resort', 'business', 'beach'].map((t) => (
-                <label key={t} className="flex items-center gap-2 mb-2 cursor-pointer">
-                  <input type="radio" name="type" value={t} checked={typeFilter === t} onChange={() => setTypeFilter(t)} className="accent-blue-600" />
-                  <span className="text-sm text-gray-600 capitalize">{t === 'all' ? 'All Types' : t}</span>
-                </label>
-              ))}
+              <div className="mb-6 pt-5 border-t border-gray-50">
+                <h4 className="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wider">Hotel Type</h4>
+                {['all', 'luxury', 'resort', 'business', 'beach'].map((t) => (
+                  <label key={t} className="flex items-center gap-3 mb-3 cursor-pointer group">
+                    <input type="radio" name="type" value={t} checked={typeFilter === t} onChange={() => setTypeFilter(t)} className="w-4 h-4 accent-blue-600" />
+                    <span className="text-sm text-gray-600 group-hover:text-gray-900 capitalize transition-colors">{t === 'all' ? 'All Types' : t}</span>
+                  </label>
+                ))}
+              </div>
+
+              <div className="pt-5 border-t border-gray-50">
+                <h4 className="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wider">Minimum Rating</h4>
+                {[0, 4, 4.5, 4.8].map((r) => (
+                  <label key={r} className="flex items-center gap-3 mb-3 cursor-pointer group">
+                    <input type="radio" name="rating" value={r} checked={ratingFilter === r} onChange={() => setRatingFilter(r)} className="w-4 h-4 accent-blue-600" />
+                    <span className="text-sm text-gray-600 group-hover:text-gray-900 flex items-center gap-1.5 transition-colors">
+                      {r === 0 ? 'Any Rating' : <><Star size={14} fill="currentColor" className="text-amber-400" /> {r}+</>}
+                    </span>
+                  </label>
+                ))}
+              </div>
             </div>
+          </aside>
 
-            <div>
-              <h4 className="text-sm font-semibold text-gray-700 mb-3">Minimum Rating</h4>
-              {[0, 4, 4.5, 4.8].map((r) => (
-                <label key={r} className="flex items-center gap-2 mb-2 cursor-pointer">
-                  <input type="radio" name="rating" value={r} checked={ratingFilter === r} onChange={() => setRatingFilter(r)} className="accent-blue-600" />
-                  <span className="text-sm text-gray-600 flex items-center gap-1">
-                    {r === 0 ? 'Any Rating' : <><Star size={12} fill="currentColor" className="text-amber-400" /> {r}+</>}
-                  </span>
-                </label>
-              ))}
+          {/* Hotel List */}
+          <div className="flex-1">
+            <div className="flex items-center justify-between mb-6 bg-white rounded-2xl p-4 shadow-sm border border-gray-100/50">
+              <p className="text-gray-600 font-medium"><span className="font-bold text-gray-900">{filtered.length}</span> hotels found</p>
+              <select className="text-sm border border-gray-200 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500/20 text-gray-700 bg-gray-50 font-medium">
+                <option>Sort: Most Popular</option>
+                <option>Sort: Price Low-High</option>
+                <option>Sort: Rating</option>
+              </select>
             </div>
-          </div>
-        </aside>
-
-        <div className="flex-1">
-          <div className="flex items-center justify-between mb-4">
-            <p className="text-gray-600 text-sm"><span className="font-bold text-gray-900">{filtered.length}</span> hotels found</p>
-            <select className="text-sm border border-gray-200 rounded-xl px-3 py-2 focus:outline-none text-gray-700 bg-white">
-              <option>Sort: Most Popular</option>
-              <option>Sort: Price Low-High</option>
-              <option>Sort: Rating</option>
-            </select>
-          </div>
-          <div className="space-y-4">
-            {filtered.map((hotel) => <HotelCard key={hotel.id} hotel={hotel} />)}
+            
+            <div className="space-y-5">
+              {filtered.map((hotel) => <HotelCard key={hotel.id} hotel={hotel} />)}
+            </div>
           </div>
         </div>
       </div>
